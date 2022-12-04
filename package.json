@@ -1,0 +1,16 @@
+{
+  "name": "@sfawcett191/instruments",
+  "version": "1.0.0",
+  "description": "Various Aircraft Instruments",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Steven Fawcett",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0",
+    "webpack": "^5.75.0"
+  }
+}
