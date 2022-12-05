@@ -1,7 +1,16 @@
-<canvas id="my-canvas" width="100px" height="100px"/>
 
-<script src="dist/instruments.js"></script>
+<style>
+body {
+    background-color: coral;
+ }
+</style>
 
-<script>
-    instruments.Compass()
-</script>
+ <body>
+    <canvas id="canvas" width="100px" height="100px"/>
+
+    <script src="dist/instruments.js"></script>
+
+    <script>
+        window.onload = instruments.Compass()
+    </script>
+</body>
