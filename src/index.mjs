@@ -4,30 +4,24 @@ export function Compass() {
     var canvas = document.querySelector("canvas");
     var ctx = canvas.getContext('2d');
 
-
     const img = new Image();
-    img.src = Files.Path() + '/images/aircraft_bezel.png';
+    img.src =  'src/images/aircraft_compass.png';
 
-    const img2 = new Image();
-    img2.src = Files.Path() + '/images/aircraft_compass.png';
 
-    img.onload = () => {
-        drawImageScaled(img, ctx );
-    }
+    var ang = 0; //angle
+    var fps = 1000 / 25; //number of frames per sec
+    img.onload = function () { //on image load do the following stuff
+        canvas.width = this.width << 1; //double the canvas width
+        canvas.height = this.height << 1; //double the canvas height
+        var cache = this; //cache the local copy of image element for future reference
+        setInterval(function () {
+            ctx.save(); //saves the state of canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+            ctx.translate(cache.width, cache.height); //let's translate
+            ctx.rotate(Math.PI / 180 * (ang += 5)); //increment the angle and rotate the image 
+            ctx.drawImage(img, -cache.width / 2, -cache.height / 2, cache.width, cache.height); //draw the image ;)
+            ctx.restore(); //restore the state of canvas
+        }, fps);
+    };
 
-    img2.onload = () => {
-        drawImageScaled(img2, ctx );
-    }
-
-    function drawImageScaled(img, ctx) {
-        var canvas = ctx.canvas;
-        var hRatio = canvas.width / img.width;
-        var vRatio = canvas.height / img.height;
-        var ratio = Math.min(hRatio, vRatio);
-        var centerShift_x = (canvas.width - img.width * ratio) / 2;
-        var centerShift_y = (canvas.height - img.height * ratio) / 2;
-        ctx.drawImage(img, 0, 0, img.width, img.height,
-            centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
-    }
 };
-
