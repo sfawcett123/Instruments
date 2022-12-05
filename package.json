@@ -2,15 +2,22 @@
   "name": "@sfawcett191/instruments",
   "version": "1.0.0",
   "description": "Various Aircraft Instruments",
-  "main": "src/index.js",
+  "main": "dist/instruments.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build-js": "browserify src/index.mjs --s instruments -p esmify > dist/instruments.js"
   },
   "author": "Steven Fawcett",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "latest",
+    "esmify": "2.1.1",
     "chai": "^4.3.7",
+    "esmify": "^2.1.1",
     "mocha": "^10.1.0",
     "webpack": "^5.75.0"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }
