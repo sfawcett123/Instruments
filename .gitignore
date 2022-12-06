@@ -1,2 +1,6 @@
 node_modules 
 package-lock.json 
+/dist/instruments.js
+/.vs/
+.DS_Store
+dist/
