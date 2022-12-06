@@ -1,5 +1,14 @@
 import * as Files from "./modules/file.js"
+import * as Draw from "./modules/draw.js"
 
+var HEADING=0;     // DESIRED HEADING
+var _HEADING = 0;  // DIAL HEADING
+var FPS = 50 ; // SPEED DIAL REFRESHS
+
+export function SetHeading( hdg )
+{
+    HEADING = 360 - hdg;
+}
 export function Compass() {
     var canvas = document.querySelector("canvas");
     var ctx = canvas.getContext('2d');
@@ -10,32 +19,23 @@ export function Compass() {
     const img = new Image();
     img.src =  'src/images/aircraft_compass.png';
 
+    var ang = 0;
 
-    var ang = 0; 
-    var fps = 1000 / 25; 
-    img.onload = function () { 
+    img.onload = function () {
         setInterval(function () {
+            // Need a proper function to drive
+            if( HEADING != _HEADING )
+                _HEADING += 1;
+
             ctx.save(); //saves the state of canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
             ctx.translate(canvas.width/2, canvas.height/2); //let's translate
-            ctx.rotate(Math.PI / 180 * (ang += 5)); //increment the angle and rotate the image 
+            ctx.rotate(Math.PI / 180 * (_HEADING )); //increment the angle and rotate the image
             ctx.translate(-(canvas.width/2), -(canvas.height/2)); //let's translate
-            drawImageScaled(img , ctx );
+            Draw.drawImageScaled(img , ctx );
             ctx.restore();
-            drawImageScaled(img2 , ctx );
+            Draw.drawImageScaled(img2 , ctx );
 
-        }, fps);
+        }, FPS);
     }
-}
-
-export function drawImageScaled(img, ctx) {
-    var canvas = ctx.canvas;
-    var hRatio = canvas.width / img.width;
-    var vRatio = canvas.height / img.height;
-    var ratio = Math.min(hRatio, vRatio);
-    var centerShift_x = (canvas.width - img.width * ratio) / 2;
-    var centerShift_y = (canvas.height - img.height * ratio) / 2;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, img.width, img.height,
-        centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
 }

@@ -13,4 +13,8 @@ body {
     <script>
         window.onload = instruments.Compass()
     </script>
+
+    <input type="text" id="HEADING" name="Heading" value="100">
+    <button onclick="instruments.SetHeading(document.getElementById('HEADING').value)">Set Heading</button>
+
 </body>
