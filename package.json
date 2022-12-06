@@ -1,6 +1,6 @@
 {
   "name": "@sfawcett191/instruments",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Various Aircraft Instruments",
   "main": "dist/js/instruments.js",
   "scripts": {
