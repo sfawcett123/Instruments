@@ -2,10 +2,9 @@
   "name": "@sfawcett191/instruments",
   "version": "0.0.1",
   "description": "Various Aircraft Instruments",
-  "main": "dist/instruments.js",
+  "main": "dist/js/instruments.js",
   "scripts": {
-    "test": "mocha",
-    "build-js": "browserify src/index.mjs --s instruments -p esmify > dist/instruments.js"
+    "build": "gulp"
   },
   "author": "Steven Fawcett",
   "license": "MIT",
@@ -23,6 +22,6 @@
     "graceful-fs": "^4.2.10"
   },
   "files": [
-    "dist/"
+    "dist/**"
   ]
 }

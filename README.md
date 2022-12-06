@@ -1,12 +1,24 @@
 # Instruments
 
-## npm
+## Controls
 
-Build 
+## Compass
+Draw a compass
+## SetHeading
+Sets the heading for the compass.
+
+## Build and Delivery instructions
+### gulp
+build
 ```
-npm run build-js
+gulp
 ```
 
+### npm
+Build
+```
+npm run build
+```
 
 Publish command:
 ```
