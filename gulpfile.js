@@ -12,7 +12,7 @@ function images( cb ) {
 
  function javascripts() {
     return browserify({
-        entries: './src/index.mjs',
+        entries: './src/index.js',
         debug: true,
         standalone: 'instruments',
         plugin: [ esmify ]
