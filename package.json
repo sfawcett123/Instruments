@@ -1,6 +1,6 @@
 {
   "name": "@sfawcett191/instruments",
-  "version": "0.0.4",
+  "version": "0.0.0-semantic-release",
   "description": "Various Aircraft Instruments",
   "main": "dist/js/instruments.js",
   "scripts": {
@@ -9,6 +9,8 @@
   "author": "Steven Fawcett",
   "license": "MIT",
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
     "browserify": "latest",
     "chai": "^4.3.7",
     "esmify": "^2.1.1",

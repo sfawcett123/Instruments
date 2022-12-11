@@ -4,3 +4,4 @@ package-lock.json
 /.vs/
 .DS_Store
 dist/
+/src/images/._.DS_Store
