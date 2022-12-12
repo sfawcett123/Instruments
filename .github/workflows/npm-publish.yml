@@ -1,29 +1,37 @@
+<<<<<<< HEAD
 name: Publish
 
+=======
+name: Release
+>>>>>>> dc288086ec2b6df28624016c9067ba30365635a7
 on:
+  workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - run: npm ci
-      - run: |
-             npm install
-             npm run build
+              fetch-depth: 0
+              persist-credentials: false 
 
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      - run: npx semantic-release
+      - run: npm ci
+
+      - run: npm install
+
+      - run: npm run build
+               
+      - name: Release
+        run: npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

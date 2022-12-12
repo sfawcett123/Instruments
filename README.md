@@ -20,8 +20,5 @@ Build
 npm run build
 ```
 
-Publish command:
-```
-npm publish --access=public
-```
+
 
