@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-name: Publish
-
-=======
 name: Release
->>>>>>> dc288086ec2b6df28624016c9067ba30365635a7
 on:
   workflow_dispatch:
   push:
