@@ -1,32 +1,22 @@
-name: Release
+name: NPM
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 
+permissions:
+  checks: write
+  contents: write
+  deployments: write
+  issues: write
+  packages: write
+  pull-requests: write
+  
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-              fetch-depth: 0
-              persist-credentials: false 
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-
-      - run: npm ci
-
-      - run: npm install
-
-      - run: npm run build
-               
-      - name: Release
-        run: npx semantic-release
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+   deliver:
+      uses: sfawcett123/workflows/.github/workflows/npm.yml@main
+      secrets:
+         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
